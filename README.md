@@ -13,7 +13,7 @@ This project aims to build a reproducible Machine Learning pipeline for predicti
 This repository follows the industry-standard *Cookiecutter Data Science* project layout:
 
 ```text
-MLOps-Prediksi_Cuaca/
+MLOps-Weather_Forecasting/
 ├── .devcontainer/      # GitHub Codespaces environment configuration
 ├── config/             # Pipeline & model parameter configurations
 ├── data/               # Data storage (raw, processed, external)
