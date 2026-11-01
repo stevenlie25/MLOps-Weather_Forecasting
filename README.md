@@ -50,7 +50,7 @@ python -m pip install -r requirements.txt
 ### Collect Weather Data
 
 ```bash
-python src/ingest.py
+python src/ingest_data.py
 ```
 
 The script collects hourly temperature, humidity, surface pressure, wind speed, and precipitation data. Each run saves a new CSV file in `data/raw/`.
