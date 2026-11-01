@@ -1,22 +1,24 @@
 """
-Data Ingestion Script for Weather Data.
-Fetches dynamic weather data from Open-Meteo API for Malang area
-and saves it into data/raw with a timestamp to prevent overwriting.
+Weather data ingestion script.
+
+Fetches weather data for Malang from the Open-Meteo API and saves
+timestamped CSV files to data/raw/ at the project root.
 """
 
-import os
 import sys
 from datetime import datetime
+from pathlib import Path
+
 import pandas as pd
 import requests
 
 
 def fetch_weather_data() -> None:
-    """Fetch weather data from Open-Meteo API and save as a timestamped CSV."""
+    """Fetch weather data and save it as a timestamped raw CSV file."""
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
-        "latitude": -7.9839,  # Latitude Malang
-        "longitude": 112.6214,  # Longitude Malang
+        "latitude": -7.9839,
+        "longitude": 112.6214,
         "hourly": [
             "temperature_2m",
             "relative_humidity_2m",
@@ -25,11 +27,11 @@ def fetch_weather_data() -> None:
             "precipitation",
         ],
         "timezone": "Asia/Jakarta",
-        "past_days": 2,  # Historical dynamic data
+        "past_days": 2,
     }
 
-    current_time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[{current_time_str}] Mengirim request ke Open-Meteo API...")
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{current_time}] Sending request to the Open-Meteo API...")
 
     try:
         response = requests.get(url, params=params, timeout=10)
@@ -39,32 +41,34 @@ def fetch_weather_data() -> None:
         df = pd.DataFrame(data["hourly"])
         df["time"] = pd.to_datetime(df["time"])
 
-        # Buat direktori data/raw jika belum ada
-        output_dir = os.path.join("data", "raw")
-        os.makedirs(output_dir, exist_ok=True)
+        # Find the project root.
+        project_root = Path(__file__).resolve().parents[1]
 
-        # Penamaan non-destruktif menggunakan timestamp
-        timestamp_filename = datetime.now().strftime("%Y%m%d_%H%M%S")
-        file_name = f"weather_raw_{timestamp_filename}.csv"
-        output_file = os.path.join(output_dir, file_name)
+        # Create the raw data folder.
+        output_dir = project_root / "data" / "raw"
+        output_dir.mkdir(parents=True, exist_ok=True)
 
-        # Simpan file CSV raw
+        # Use a timestamp to avoid overwriting old files.
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+        output_file = output_dir / f"weather_raw_{timestamp}.csv"
+
         df.to_csv(output_file, index=False)
 
         print("\n" + "=" * 50)
-        print("=== PENGAMBILAN DAN PENYIMPANAN DATA BERHASIL ===")
+        print("DATA INGESTION COMPLETED SUCCESSFULLY")
         print("=" * 50)
-        print(f"Lokasi Penyimpanan : {output_file}")
-        print(f"Total Baris Data   : {len(df)} baris")
-        print("\nPreview 5 Baris Pertama Data Mentah (Raw Data):")
+        print(f"Output file : {output_file}")
+        print(f"Total rows  : {len(df)}")
+        print("\nPreview of the first five rows:")
         print(df.head())
         print("=" * 50 + "\n")
 
-    except requests.exceptions.RequestException as req_err:
-        print(f"[ERROR] Masalah koneksi/HTTP request: {req_err}")
+    except requests.exceptions.RequestException as exc:
+        print(f"[ERROR] Connection or HTTP request failed: {exc}")
         sys.exit(1)
-    except Exception as err:
-        print(f"[ERROR] Terjadi kesalahan tak terduga: {err}")
+
+    except Exception as exc:
+        print(f"[ERROR] Failed to retrieve or save weather data: {exc}")
         sys.exit(1)
 
 
