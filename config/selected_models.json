@@ -1,0 +1,25 @@
+{
+  "selection_metric": "validation_mae",
+  "selection_direction": "minimize",
+  "selection_data": "validation year 2025",
+  "dataset_dvc_md5": "02242626073bf45940b01fba97815038",
+  "training_git_commit": "5942216b87efe04835d2fa8c9e07a831bb655192",
+  "models": {
+    "temperature": {
+      "run_id": "2070440bb07a4bcf970f649a86db54a7",
+      "model_uri": "runs:/2070440bb07a4bcf970f649a86db54a7/weather_model",
+      "n_estimators": 100,
+      "max_depth": 10,
+      "min_samples_leaf": 2,
+      "random_state": 42
+    },
+    "precipitation": {
+      "run_id": "4e2de5d9de9c4308b0eb426227ede66d",
+      "model_uri": "runs:/4e2de5d9de9c4308b0eb426227ede66d/weather_model",
+      "n_estimators": 200,
+      "max_depth": 15,
+      "min_samples_leaf": 5,
+      "random_state": 42
+    }
+  }
+}
