@@ -1,0 +1,398 @@
+{
+  "source": "Open-Meteo Historical Weather API",
+  "data_type": "reanalysis",
+  "endpoint": "https://archive-api.open-meteo.com/v1/archive",
+  "parameters": {
+    "latitude": -7.9839,
+    "longitude": 112.6214,
+    "hourly": "temperature_2m,relative_humidity_2m,surface_pressure,wind_speed_10m,precipitation",
+    "models": "era5",
+    "timezone": "Asia/Jakarta",
+    "temperature_unit": "celsius",
+    "wind_speed_unit": "kmh",
+    "precipitation_unit": "mm",
+    "start_date": "2023-01-01",
+    "end_date": "2026-10-30"
+  },
+  "retrieved_at_utc": "2026-11-05T12:27:14.641815+00:00",
+  "hourly_units": {
+    "time": "iso8601",
+    "temperature_2m": "°C",
+    "relative_humidity_2m": "%",
+    "surface_pressure": "hPa",
+    "wind_speed_10m": "km/h",
+    "precipitation": "mm"
+  },
+  "rows": 33576,
+  "sha256": "4c41b01033d24e69200f493859c284d8dc1978396f0b32bf87ade512ab1b7c02",
+  "chunks": [
+    {
+      "start_date": "2023-01-01",
+      "end_date": "2023-01-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2023-02-01",
+      "end_date": "2023-02-28",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 672
+    },
+    {
+      "start_date": "2023-03-01",
+      "end_date": "2023-03-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2023-04-01",
+      "end_date": "2023-04-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2023-05-01",
+      "end_date": "2023-05-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2023-06-01",
+      "end_date": "2023-06-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2023-07-01",
+      "end_date": "2023-07-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2023-08-01",
+      "end_date": "2023-08-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2023-09-01",
+      "end_date": "2023-09-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2023-10-01",
+      "end_date": "2023-10-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2023-11-01",
+      "end_date": "2023-11-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2023-12-01",
+      "end_date": "2023-12-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-01-01",
+      "end_date": "2024-01-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-02-01",
+      "end_date": "2024-02-29",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 696
+    },
+    {
+      "start_date": "2024-03-01",
+      "end_date": "2024-03-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-04-01",
+      "end_date": "2024-04-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2024-05-01",
+      "end_date": "2024-05-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-06-01",
+      "end_date": "2024-06-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2024-07-01",
+      "end_date": "2024-07-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-08-01",
+      "end_date": "2024-08-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-09-01",
+      "end_date": "2024-09-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2024-10-01",
+      "end_date": "2024-10-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2024-11-01",
+      "end_date": "2024-11-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2024-12-01",
+      "end_date": "2024-12-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-01-01",
+      "end_date": "2025-01-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-02-01",
+      "end_date": "2025-02-28",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 672
+    },
+    {
+      "start_date": "2025-03-01",
+      "end_date": "2025-03-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-04-01",
+      "end_date": "2025-04-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2025-05-01",
+      "end_date": "2025-05-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-06-01",
+      "end_date": "2025-06-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2025-07-01",
+      "end_date": "2025-07-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-08-01",
+      "end_date": "2025-08-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2025-10-01",
+      "end_date": "2025-10-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2025-11-01",
+      "end_date": "2025-11-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2026-02-01",
+      "end_date": "2026-02-28",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 672
+    },
+    {
+      "start_date": "2026-03-01",
+      "end_date": "2026-03-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2026-04-01",
+      "end_date": "2026-04-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2026-06-01",
+      "end_date": "2026-06-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2026-08-01",
+      "end_date": "2026-08-31",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 744
+    },
+    {
+      "start_date": "2026-09-01",
+      "end_date": "2026-09-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    },
+    {
+      "start_date": "2026-10-01",
+      "end_date": "2026-10-30",
+      "latitude": -8.0,
+      "longitude": 112.5,
+      "elevation": 440.0,
+      "rows": 720
+    }
+  ]
+}
