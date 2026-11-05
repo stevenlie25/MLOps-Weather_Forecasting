@@ -1,0 +1,5 @@
+outs:
+- md5: 02242626073bf45940b01fba97815038
+  size: 8604254
+  hash: md5
+  path: weather_modeling_era5_1h.csv
