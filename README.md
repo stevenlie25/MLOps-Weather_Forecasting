@@ -6,11 +6,11 @@ A reproducible weather prediction project for Malang, Indonesia. The project is 
 
 ## Development Status
 
-**Implemented:** API ingestion, cumulative dataset updates, preprocessing, and dataset versioning with DVC.
+**Implemented:** forecast ingestion, cumulative dataset updates, preprocessing, DVC versioning, historical ERA5 ingestion, feature engineering, MLflow experiment tracking, model selection, and held-out test evaluation.
 
-**Planned:** historical training data, feature engineering, MLflow experiments, Model Registry, inference, and Continuous Training.
+**Planned:** registration of selected weather models, persistent DVC and MLflow storage, operational inference, and Continuous Training.
 
-All current processes run manually.
+All current workflows run manually.
 
 ## Project Structure
 
@@ -111,15 +111,40 @@ The merge separately confirmed **24 additional rows**. DVC compares file metadat
 
 ### Reproducibility and Storage
 
-Versioning identifies the exact dataset used for an experiment. Future MLflow runs will link the dataset identity and Git commit with training parameters, metrics, and model artifacts.
+Versioning identifies the exact dataset used for an experiment. MLflow runs record the dataset identity and Git commit alongside training parameters, metrics, and model artifacts.
 
 **No DVC remote is configured yet.** Data versions remain in the Codespace's local DVC cache. Preserve this cache: GitHub contains pointers, not dataset contents. Persistent storage and `dvc push` are needed before another environment can retrieve the data with `dvc pull`.
 
+## Experiment Tracking and Model Evaluation
+
+Historical ERA5 reanalysis for Malang covers 1 January 2023–30 October 2026 (33,576 hourly records). The DVC-versioned modeling dataset contains 33,551 rows and 29 features for predicting temperature and precipitation one hour ahead.
+
+Data is split chronologically by target time: training 2023–2024, validation 2025, and test January–30 October 2026. Three Random Forest configurations were compared per target using validation MAE.
+
+| Target | Trees / depth / min leaf | Validation MAE | Test MAE | Test RMSE |
+| --- | --- | ---: | ---: | ---: |
+| Temperature (°C) | 100 / 10 / 2 | 0.438655 | 0.442370 | 0.599829 |
+| Precipitation (mm) | 200 / 15 / 5 | 0.293438 | 0.201436 | 0.666297 |
+
+Both selected models outperformed persistence baselines on the test set. Selection details are stored in `config/selected_models.json`. MLflow records parameters, metrics, model artifacts, Git commits, and DVC dataset hashes.
+
+```bash
+python src/train.py --target temperature \
+  --n-estimators 100 --max-depth 10 --min-samples-leaf 2
+
+python src/evaluate.py
+
+mlflow ui --backend-store-uri sqlite:///mlflow.db \
+  --host 0.0.0.0 --port 5000
+```
+
+Run from the repository root with a clean Git working tree. Use private port forwarding in Codespaces. Training and evaluation require the local DVC datasets; evaluation also requires the selected MLflow artifacts.
+
+Results describe historical ERA5 prediction, not operational forecasting against station observations. MLflow storage remains local. Registration of the selected weather models and Continuous Training remain planned.
+
 ## Next Steps
 
-Prepare historical training data, use chronological evaluation, track experiments with MLflow, and register selected models. Continuous Training will add scheduled data updates, retraining, performance monitoring, and evaluation before model promotion.
-
-The current forecast dataset demonstrates versioning; it is not yet the final training dataset.
+Register the selected models, configure persistent storage for DVC and MLflow, and prepare operational inference. Continuous Training will introduce scheduled data updates, retraining, monitoring, and evaluation before model promotion.
 
 ## References
 
