@@ -196,6 +196,8 @@ def main():
         mlflow.sklearn.log_model(
             sk_model=model,
             name="weather_model",
+            serialization_format="skops",
+            skops_trusted_types=["sklearn.tree._tree.Tree"],
             signature=infer_signature(
                 X_train.head(5), model.predict(X_train.head(5))
             ),
