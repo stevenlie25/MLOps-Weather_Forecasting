@@ -1,0 +1,41 @@
+{
+  "source_file": "weather_historical_era5_20230101_20261030.csv",
+  "source_sha256": "4c41b01033d24e69200f493859c284d8dc1978396f0b32bf87ade512ab1b7c02",
+  "output_sha256": "52c2ba3d7c7e2a1060b6e294b6d401bb6505b63ef76fbbff19acf0630e6e46be",
+  "timezone": "Asia/Jakarta",
+  "horizon_hours": 1,
+  "lags_hours": [
+    0,
+    1,
+    2,
+    3,
+    24
+  ],
+  "feature_count": 29,
+  "targets": [
+    "target_temperature_2m",
+    "target_precipitation"
+  ],
+  "split_basis": "target_time",
+  "validation_start": "2025-01-01T00:00:00+07:00",
+  "test_start": "2026-01-01T00:00:00+07:00",
+  "source_rows": 33576,
+  "output_rows": 33551,
+  "splits": {
+    "train": {
+      "rows": 17519,
+      "target_start": "2023-01-02T01:00:00+07:00",
+      "target_end": "2024-12-31T23:00:00+07:00"
+    },
+    "validation": {
+      "rows": 8760,
+      "target_start": "2025-01-01T00:00:00+07:00",
+      "target_end": "2025-12-31T23:00:00+07:00"
+    },
+    "test": {
+      "rows": 7272,
+      "target_start": "2026-01-01T00:00:00+07:00",
+      "target_end": "2026-10-30T23:00:00+07:00"
+    }
+  }
+}
