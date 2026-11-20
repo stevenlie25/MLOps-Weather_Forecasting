@@ -146,6 +146,34 @@ Results describe historical ERA5 prediction, not operational forecasting against
 
 Register the selected models, configure persistent storage for DVC and MLflow, and prepare operational inference. Continuous Training will introduce scheduled data updates, retraining, monitoring, and evaluation before model promotion.
 
+## Model Registry and Inference
+
+Two versions are registered for each target. Production versions are selected by the lowest MAE on the 2025 validation split.
+
+| Target | v1 validation MAE | v2 validation MAE | Active version |
+| --- | ---: | ---: | --- |
+| Temperature (°C) | 0.438655 | 0.438838 | v1 |
+| Precipitation (mm) | 0.293438 | 0.293313 | v2 |
+
+Version 2 increases the number of trees from 100 to 150 for temperature and from 200 to 250 for precipitation; other model settings remain unchanged. The differences are small, and a newer version is not automatically better. Test results were not used for this comparison.
+
+Selected versions followed None → Staging → Production. Stages are deprecated in MLflow but are used here to demonstrate the required lifecycle.
+
+Production metadata is tracked by DVC in `metadata/production_models.yaml.dvc`. The YAML links Registry versions to MLflow runs, training commits, and dataset hashes.
+
+Run inference from the repository root:
+
+```bash
+python src/predict.py --target temperature --input examples/inference_input.csv
+python src/predict.py --target precipitation --input examples/inference_input.csv
+```
+
+The script loads `models:/malang-weather-temperature-1h/Production` or `models:/malang-weather-precipitation-1h/Production` and checks that the active version matches the metadata.
+
+Input CSV files must contain the 29 prepared features with complete, finite values. The included example contains three validation rows and is a smoke test, not live weather input.
+
+Inference currently requires the Codespace's local MLflow database, model artifacts, and metadata YAML. No DVC remote is configured; cloning the repository alone does not restore these assets. This verifies Registry-based inference, not a deployed forecasting service.
+
 ## References
 
 - [Open-Meteo](https://open-meteo.com/en/docs)
